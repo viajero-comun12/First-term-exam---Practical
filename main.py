@@ -1,3 +1,10 @@
+import os
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 from fastapi import FastAPI, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
@@ -8,7 +15,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import File, UploadFile, Form
 import uuid
 from s3 import upload_file_to_s3, S3_BUCKET_VIDEOS, S3_BUCKET_THUMBNAILS
-
 
 models.Base.metadata.create_all(bind=engine)
 
